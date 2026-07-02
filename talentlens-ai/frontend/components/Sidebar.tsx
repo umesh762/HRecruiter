@@ -1,4 +1,4 @@
-import { Plus, History, Settings, FileSpreadsheet, LayoutDashboard, BrainCircuit } from 'lucide-react';
+import { Plus, History, Settings, FileSpreadsheet, BrainCircuit } from 'lucide-react';
 
 interface SidebarProps {
   onNewAnalysis: () => void;
