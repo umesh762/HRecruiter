@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: hrecruiter-backend
+    env: python
+    plan: free
+    rootDir: talentlens-ai/backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+
+  - type: web
+    name: hrecruiter-frontend
+    env: node
+    plan: free
+    rootDir: talentlens-ai/frontend
+    buildCommand: npm install && npm run build
+    startCommand: npm run start -- --port $PORT
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        value: https://hrecruiter-backend.onrender.com
