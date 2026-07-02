@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: hrecruiter-backend
+    env: python
+    plan: free
+    buildCommand: "pip install -r talentlens-ai/backend/requirements.txt"
+    startCommand: "cd talentlens-ai/backend && gunicorn main:app --workers 1 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.12
+      - key: PYTHONPATH
+        value: talentlens-ai/backend
