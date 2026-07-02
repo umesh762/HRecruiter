@@ -1,7 +1,5 @@
 import { RankResponse } from '@/types/candidate';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
-
 export async function rankCandidates(
   jobDescriptionText: string,
   jobDescriptionFile: File | null,
@@ -16,7 +14,7 @@ export async function rankCandidates(
 
   if (isTextOnly) {
     // Send standard JSON request
-    const response = await fetch(`${API_BASE_URL}/api/rank-candidates`, {
+    const response = await fetch('http://localhost:8000/api/rank-candidates', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -61,7 +59,7 @@ export async function rankCandidates(
 
     // Send request — Note: Do NOT set Content-Type header when using FormData;
     // the browser will automatically set it with the correct boundary parameters.
-    const response = await fetch(`${API_BASE_URL}/api/rank-candidates-upload`, {
+    const response = await fetch('http://localhost:8000/api/rank-candidates-upload', {
       method: 'POST',
       body: formData,
     });
